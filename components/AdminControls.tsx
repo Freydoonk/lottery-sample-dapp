@@ -16,7 +16,7 @@ function AdminControls() {
         const notification = toast.loading('Picking a lucky winner ...');
 
         try {
-            const data = await withdrawCommission([{}]);
+            const data = await drawWinnerTicket([{}]);
             toast.success('A winner has been selected!', { id: notification });
             console.info('Contract call success', data);
         }

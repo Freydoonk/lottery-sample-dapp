@@ -95,38 +95,42 @@ function TicketCostInfo() {
                     </div>
                 </div>
 
-                <button
-                    disabled={expiration?.toString() < Date.now().toString() || remainingTickets?.toNumber() === 0}
-                    onClick={handleClick}
-                    className='mt-3 w-full bg-gradient-to-br from-orange-500 to-emerald-600 
-                    px-5 py-3 rounded-md font-semibold text-white shadow-xl disabled:from-gray-600 disabled:to-gray-500
-                     disabled:text-gray-100 disabled:cursor-not-allowed'>
-                    Buy {quantity} tickets for {ticketPriceTitle}
-                </button>
+                <div className='flex justify-center'>
+                    <button
+                        disabled={expiration?.toString() < Date.now().toString() || remainingTickets?.toNumber() === 0}
+                        onClick={handleClick}
+                        className='mt-3 w-80 text-xs bg-gradient-to-br from-orange-500 to-emerald-600 
+                                   px-5 py-3 rounded-md font-semibold text-white shadow-xl disabled:from-gray-600
+                                   disabled:to-gray-500 disabled:text-gray-100 disabled:cursor-not-allowed'>
+                        Buy {quantity} tickets for {ticketPriceTitle}
+                    </button>
+                </div>
             </div>
 
-            {userTickets > 0 && (
-                <div className='stats'>
-                    <p className='mb-1'>You have {userTickets} tickets in this draw.</p>
+            {
+                userTickets > 0 && (
+                    <div className='stats'>
+                        <p className='mb-1'>You have {userTickets} tickets in this draw.</p>
 
-                    <div className='flex max-w-xs flex-wrap gap-x-2 gap-y-2'>
-                        {
-                            Array(userTickets)
-                                .fill('')
-                                .map((_, index) => (
-                                    <p
-                                        key={index}
-                                        className='text-emerald-300 h-9 w-8
+                        <div className='flex max-w-xs flex-wrap gap-x-2 gap-y-2'>
+                            {
+                                Array(userTickets)
+                                    .fill('')
+                                    .map((_, index) => (
+                                        <p
+                                            key={index}
+                                            className='text-emerald-300 h-9 w-8
                                         bg-emerald-500/30 rounded-lg flex flex-shrink-0
                                         items-center justify-center text-xs italic'>
-                                        {index + 1}
-                                    </p>
-                                ))
-                        }
+                                            {index + 1}
+                                        </p>
+                                    ))
+                            }
+                        </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )
+            }
+        </div >
     )
 }
 

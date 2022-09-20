@@ -1,8 +1,9 @@
-import { useCoinbaseWallet  } from '@thirdweb-dev/react'
+import { useCoinbaseWallet , useMetamask } from '@thirdweb-dev/react'
 import React from 'react'
 
 function Login() {
-    const connectToWallet = useCoinbaseWallet ();
+    const connectToCoinbaseWallet = useCoinbaseWallet ();
+    const connectToMetamask = useMetamask ();
 
     return (
         <div className='bg-[#091B18] min-h-screen flex flex-col items-center justify-center text-center'>
@@ -13,8 +14,14 @@ function Login() {
 
                 <button
                     className='bg-white px-5 py-3 mt-5 rounded-lg shadow-lg font-bold'
-                    onClick={connectToWallet}>
-                    Login with your wallet
+                    onClick={connectToCoinbaseWallet}>
+                    Login with Coinbase Wallet
+                </button>
+
+                <button
+                    className='bg-white px-5 py-3 mt-5 rounded-lg shadow-lg font-bold'
+                    onClick={connectToMetamask}>
+                    Login with MetaMask
                 </button>
             </div>
         </div>
